@@ -1,0 +1,71 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::before, *::after{
+    box-sizing: inherit;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+p{
+    margin: 0;
+}
+
+ul,
+li{
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    margin: 0;
+    font-size: inherit;
+}
+
+body{
+    position: relative;
+    overflow-x: hidden;
+    @extend %sf-Georgia;
+    margin: 0;
+}
+
+.container{
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.section__title{
+    @extend %sf-Georgia;
+    max-width: 400px;
+    font-size: 35px;
+    line-height: 45px;
+    letter-spacing: 0.06em;
+    color: #454545;
+}
+
+.section__btn{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 17px 44px;
+    color: #292929;
+    text-decoration: none;
+    @extend %sf-Georgia;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    border: 2px solid #f1cdb3;
+    border-radius: 26px;
+    background: #fafafa;
+    transition: background-color .3s linear;
+    &:hover{
+        background-color: #f1cdb3;
+    }
+}
