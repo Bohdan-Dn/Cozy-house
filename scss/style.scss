@@ -9,27 +9,124 @@
     top: 60px;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 10;
     &__inner{
         display: flex;
         justify-content: space-between;
-        text-align: center;
+        align-items: center;
+        width: 100%;
+        min-height: 52px;
+        @include breakpoint(md){
+            position: fixed;
+            top: 20px;
+        }
     }
 }
 
-.logo__location{
+.logo{
+    position: absolute;
+    z-index: 10;
+    &__location{
     display: block;
     @extend %sf-ArialMT;
     font-size: 13px;
     letter-spacing: 0.1em;
     color: #ffffff;
+    }
 }
 
 .menu{
+    width: 100%;
+    &__icon{
+        display: none;
+        @include breakpoint(md){
+            display: block;
+            position: absolute;
+            top: 30%;
+            right: 40px;
+            z-index: 5;
+            width: 30px;
+            height: 18px;
+            cursor: pointer;
+        }
+    }
+    &__icon span,
+    &__icon::before,
+    &__icon::after{
+        position: absolute;
+        left: 0;
+        height: 10%;
+        width: 100%;
+        transition: all .3s ease 0s;
+        background-color: #ffffff;
+    }
+    &__icon::before,
+    &__icon::after{
+        content: "";
+    }
+    &__icon span{
+        top: 50%;
+        transform: scale(1) translate(0px, -50%);
+    }
+    &__icon::before{
+        top: 0px;
+    }
+    &__icon::after{
+        bottom: 0px;
+    }
+    &__body{
+        display: flex;  
+        justify-content: right; 
+        @include breakpoint(md){
+            display: block;
+            justify-content: center;
+            position: fixed;
+            top: 0px;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(48, 34, 34, 0.92);
+            padding: 100px 30px 30px 30px;
+            transition: left 0.3s ease 0s;
+            overflow: auto;    
+        }
+    }
+    &__body._active{
+        left: 0;
+    }    
+    &__body._active::before{
+        @include breakpoint(md){
+            content: "";
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0%;
+            z-index: 2;
+            height: 90px;
+            background-color: rgba(92, 84, 84, 1);
+        }
+    }                 
+    &__list{        
+        @include breakpoint(md){    
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+        }
+    }
     &__list-item{
-        display: inline-block;
+        display: block;
         & + .menu__list-item{
         margin-left: 40px;
+        @include breakpoint(lg){
+            margin-left: 25px;
+            }
+        @include breakpoint(md){
+            margin-left: 0px;
+            }    
+        }
+        @include breakpoint(md){
+            text-align: center;
+            margin-bottom: 30px;
         }
     }
     &__list-link{
@@ -39,6 +136,9 @@
         font-size: 15px;
         color: #cdcdcd;
         transition: color .3s linear;
+        @include breakpoint(md){
+            font-size: 24px;
+        }
     }
     &__list-link::after{
         content: "";
@@ -51,6 +151,9 @@
         border-radius: 3px;
         opacity: 0;
         transition: opacity .3s linear;
+        @include breakpoint(md){
+            display: none;
+        }
     }
     &__list-link:hover,
     &__list-link.active{
@@ -100,7 +203,13 @@
         margin: 90px auto;
     }
     &__img{
-        margin-right: 120px;
+        flex: 0 1 35.7%;
+    }
+    &__img-item{
+        width: 100%;
+    }
+    &__content{
+        flex: 0 1 50.4%;
     }
     &__content-text{
         margin-top: 32px;
@@ -223,8 +332,13 @@
         flex-direction: row;
         padding: 70px 0 80px 0;
     }
+    &__item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     &__image{
-        max-width: 550px;
+        max-width: 100%;
     }
     &__content{
         max-width: 360px;
@@ -283,6 +397,7 @@
         padding: 80px 0 70px 0;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
     &__item{
         max-width: 315px;
@@ -363,30 +478,3 @@
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@import "_media";
