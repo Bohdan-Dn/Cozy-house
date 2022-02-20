@@ -35,7 +35,9 @@ body{
     @extend %sf-Georgia;
     margin: 0;
 }
-
+body._lock{
+    overflow: hidden;
+}
 .container{
     max-width: 1200px;
     padding: 0 15px;

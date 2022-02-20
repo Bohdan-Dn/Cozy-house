@@ -11,6 +11,17 @@ const swiper = new Swiper(`.swiper`, {
     }
 });
 
+// Menu burger
+const iconMenu = document.querySelector('.menu__icon');
+const menuBody = document.querySelector('.menu__body');
+if (iconMenu) {
+    iconMenu.addEventListener("click", function (e) {
+        document.body.classList.toggle('_lock');
+        iconMenu.classList.toggle('_active');
+        menuBody.classList.toggle('_active');
+    })
+}
+
 // Scroll when click
 const menuLinks = document.querySelectorAll('.menu__list-link[data-goto]');
 if (menuLinks.length > 0) {
@@ -23,6 +34,12 @@ if (menuLinks.length > 0) {
         if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
             const gotoBlock = document.querySelector(menuLink.dataset.goto);
             const gotoBlockValue = gotoBlock.getBoundingClientRect().top;
+
+            if (iconMenu.classList.contains('_active')) {
+                document.body.classList.remove('_lock');
+                iconMenu.classList.remove('_active');
+                menuBody.classList.remove('_active');
+            }
 
             window.scrollTo({
                 top: gotoBlockValue,

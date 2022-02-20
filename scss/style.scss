@@ -10,19 +10,17 @@
     left: 0;
     right: 0;
     z-index: 10;
+    @include breakpoint(md){
+        top: 5px;
+    }
     &__inner{
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
         min-height: 52px;
-        @include breakpoint(md){
-            position: fixed;
-            top: 20px;
-        }
     }
 }
-
 .logo{
     position: absolute;
     z-index: 10;
@@ -74,6 +72,17 @@
     &__icon::after{
         bottom: 0px;
     }
+    &__icon._active span{
+        transform: scale(0) translate(0px, -50%);
+    }
+    &__icon._active::before{
+        top: 50%;
+        transform: rotate(-45deg) translate(0%, -50%);
+    }
+    &__icon._active::after{
+        bottom: 50%;
+        transform: rotate(45deg) translate(0%, 50%);
+    }
     &__body{
         display: flex;  
         justify-content: right; 
@@ -86,27 +95,28 @@
             width: 100%;
             height: 100%;
             background-color: rgba(48, 34, 34, 0.92);
-            padding: 100px 30px 30px 30px;
+            padding: 80px 30px 30px 30px;
             transition: left 0.3s ease 0s;
             overflow: auto;    
         }
     }
     &__body._active{
         left: 0;
-    }    
+    }
     &__body._active::before{
         @include breakpoint(md){
             content: "";
             position: fixed;
             width: 100%;
-            top: 0;
+            top: 0px;
             left: 0%;
             z-index: 2;
-            height: 90px;
+            height: 60px;
             background-color: rgba(92, 84, 84, 1);
         }
     }                 
-    &__list{        
+    &__list{
+
         @include breakpoint(md){    
             display: flex;
             flex-direction: column;
@@ -114,7 +124,7 @@
         }
     }
     &__list-item{
-        display: block;
+        display: inline-block;
         & + .menu__list-item{
         margin-left: 40px;
         @include breakpoint(lg){
@@ -315,6 +325,9 @@
     &__item{
         width: 20%;
         padding: 40px 0;
+        @include breakpoint(lg){
+            width: 25%;
+        }
     }
     &__item-text{
         margin-top: 30px;
