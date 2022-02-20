@@ -1,3 +1,5 @@
+@import "_vars";
+
 html{
     box-sizing: border-box;
 }
@@ -51,6 +53,9 @@ body._lock{
     line-height: 45px;
     letter-spacing: 0.06em;
     color: #454545;
+    @include breakpoint(xs){
+        font-size: 24px;
+    }
 }
 
 .section__btn{

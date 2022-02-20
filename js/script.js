@@ -1,14 +1,23 @@
 // Slider
 const swiper = new Swiper(`.swiper`, {
     speed: 400,
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween: 50,
     slidesPerGroup: 1,
+
+    breakpoints: {
+        992: {
+            slidesPerView: 3,
+        },
+        778: {
+            slidesPerView: 2,
+        },
+    },
 
     navigation: {
         nextEl: `.friends__nav-btn-next`,
         prevEl: `.friends__nav-btn-prev`,
-    }
+    },
 });
 
 // Menu burger
